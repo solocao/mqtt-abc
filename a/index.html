@@ -1,0 +1,25 @@
+<html>
+<head>
+    <script src="./browserMqtt.js"></script>
+</head>
+<body>
+<script>
+  console.log('hello 0 ');
+  var client = mqtt.connect("ws://10.8.5.79:3000");
+  console.log('hello 1');
+  client.subscribe("mqtt/demo");
+  console.log('hello 12');
+  client.on("message", function(topic, payload) {
+    alert([topic, payload].join(": "));
+    client.end();
+  });
+
+  client.publish("mqtt/demo", "hello world!");
+</script>
+</body>
+</html>
+
+作者：Aliyunyun
+链接：http://www.jianshu.com/p/933b463840f6
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
